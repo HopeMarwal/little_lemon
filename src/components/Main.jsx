@@ -10,6 +10,7 @@ import specialThree from '../assets/img/lemon_dessert.jpg'
 import MarioAndAdrianA from '../assets/img/restaurant_chef_B.jpg'
 import MarioAndAdrianB from '../assets/img/Mario_and_Adrian_A.jpg'
 import CardItem from './CardItem';
+import ReviewCard from './ReviewCard';
 
 export default function Main() {
   const specials = [
@@ -88,13 +89,17 @@ export default function Main() {
             })
           }
         </div>
-        
       </section>
 
       <section className="testimonials">
         <div className="testmonials_wrapper">
           <h1>Testimonials</h1>
           {/* map over testimonials <ReviewCard /> */}
+          {
+            testimonials.map((item) => {
+              return (<ReviewCard key={item.id} item={item} />)
+            })
+          }
         </div>
       </section>
 
