@@ -8,20 +8,76 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
+  .burger {
+    display: none;
+  }
   .logo {
     width: 20%;
     img {
       width: 100%;
     }
   }
+  .list_wrapper {
+    width: 70%;
+  }
   ul {
     display: flex;
-    width: 70%;
     flex-wrap: wrap;
     justify-content: space-between;
     a {
       text-transform: uppercase;
       font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    position: relative;
+    .burger {
+      display: block;
+      max-width: 30px;
+      cursor: pointer;
+      img {
+        width: 100%;
+      }
+    }
+    .list_wrapper {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      width: 0px;
+      height: 100vh;
+      opacity: 0;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.205);
+      transition: opacity 0.2s linear;
+      ul {
+        transition-delay: 0.2s;
+        transition: all 0.5s linear;
+        transform: translateX(-250px);
+      }
+      &.show {
+        display: flex;
+        width: 100vw;
+        opacity: 1;
+        ul {
+          transform: translateX(0);
+        }
+      }
+    }
+    ul {
+      flex-direction: column;
+      width: 250px;
+      background: rgba(255, 255, 255, 0.683);
+      backdrop-filter: blur(10px);
+      justify-content: flex-start;
+      padding: 90px 10px 10px 30px;
+      gap: 20px;
+      a {
+        font-size: 22px;
+      }
     }
   }
 }
