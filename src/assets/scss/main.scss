@@ -1,0 +1,41 @@
+@import './var';
+
+main {
+  .specials {
+    max-width: 960px;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  h1 {
+    color: $main-clr-1;
+  }
+  .specials_items {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+
+@media (max-width: 576px) {
+  main {
+    .specials {
+      h1 {
+        font-size: 45px;
+        text-align: center;
+        width: 100%;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

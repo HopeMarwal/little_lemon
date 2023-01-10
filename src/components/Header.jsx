@@ -16,7 +16,6 @@ export default function Header() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet sagittis risus, quis volutpat lorem euismod sed.</p>
           <Button>Reserve a table</Button>
         </div>
-        
         <div className='img'>
           <img src={Image} alt="restaurant_food_little_lemon" />
         </div>
