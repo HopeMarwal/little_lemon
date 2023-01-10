@@ -1,5 +1,7 @@
 //img
 import Logo from '../assets/img/Logo.svg'
+//style
+import '../assets/scss/nav.scss'
 
 export default function Nav() {
   return (

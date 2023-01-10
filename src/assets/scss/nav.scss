@@ -1,0 +1,27 @@
+@import './var';
+
+nav {
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  .logo {
+    width: 20%;
+    img {
+      width: 100%;
+    }
+  }
+  ul {
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    a {
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+  }
+}

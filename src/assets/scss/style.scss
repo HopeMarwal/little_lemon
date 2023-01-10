@@ -1,1 +1,22 @@
 @import './var';
+
+a {
+  color: $highlight-clr-1;
+  font-family: $font-sans;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+  
+}
+
+@media (max-width: 576px) {
+  
+}
