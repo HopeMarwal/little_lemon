@@ -26,18 +26,29 @@ main {
   .testimonials {
     background-color: $secondary-clr-1;
     padding: 90px 10px;
+    h1 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+    }
     .testmonials_wrapper {
       max-width: 960px;
       padding: 10px;
       margin: auto;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
       gap: 10px;
-      h1 {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 30px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    .testimonials {
+      .testmonials_wrapper {
+        overflow-x: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
   }

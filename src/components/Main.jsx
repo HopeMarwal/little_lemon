@@ -92,8 +92,8 @@ export default function Main() {
       </section>
 
       <section className="testimonials">
+        <h1>Testimonials</h1>
         <div className="testmonials_wrapper">
-          <h1>Testimonials</h1>
           {/* map over testimonials <ReviewCard /> */}
           {
             testimonials.map((item) => {
@@ -110,8 +110,8 @@ export default function Main() {
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi repellat nobis aperiam voluptatem delectus cum dolorum recusandae magnam, itaque autem? Corporis magni enim iste similique repudiandae fuga eveniet deserunt incidunt.</p>
         </div>
         <div className='img'>
-          <img src="" alt="" />
-          <img src="" alt="" />
+          <img src={MarioAndAdrianA} alt="Mario_and_Adrian" />
+          <img src={MarioAndAdrianB} alt="Mario_and_Adrian" />
         </div>
       </section>
     </main>
