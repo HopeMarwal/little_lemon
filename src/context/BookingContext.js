@@ -26,6 +26,8 @@ export const BookingProvider = ({children}) => {
     phone: ''
   })
 
+  //handle validation
+
   const handleChange = (property, value) => {
     setFormData({
       ...formData,

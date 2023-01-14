@@ -7,37 +7,37 @@ form {
   .btn {
     width: 100%;
   }
+  .field {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: $font-sans;
+    margin-bottom: 35px;
+    position: relative;
+  }
+  label {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 20px;
+    span {
+      color: red;
+    }
+  }
+  input, select {
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    background-color: $highlight-clr-2;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px 30px;
+    font-weight: 700;
+    font-family: $font-sans;
+    color: $main-clr-1;
+  }
   .customize {
     margin-bottom: 270px;
-    .field {
-      display: flex;
-      flex-wrap: wrap;
-      font-family: $font-sans;
-      margin-bottom: 35px;
-      position: relative;
-    }
-    label {
-      width: 100%;
-      margin-bottom: 5px;
-      font-size: 20px;
-      span {
-        color: red;
-      }
-    }
-    input, select {
-      width: 100%;
-      outline: none;
-      padding: 10px;
-      font-size: 20px;
-      border: none;
-      background-color: $highlight-clr-2;
-      border-radius: 8px;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      padding: 20px 30px;
-      font-weight: 700;
-      font-family: $font-sans;
-      color: $main-clr-1;
-    }
     //Сustom checkbox
     .check {
       .container {
@@ -140,6 +140,22 @@ form {
       font-family: $font-sans;
       color: $main-clr-1;
       border-bottom: 1px dashed #495E57;;
+    }
+  }
+  .confirmation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: $font-sans;
+    font-size: 25px;
+    color: $highlight-clr-1;
+    margin-bottom: 50px;
+    .property {
+      width: 45%;
+      font-weight: 700;
+    }
+    .value {
+      width: calc(55% - 20px);
     }
   }
 }

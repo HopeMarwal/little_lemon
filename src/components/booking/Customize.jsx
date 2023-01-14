@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import FormErrorMessage from './FormErrorMessage'
 //booking context
 import { useBooking } from '../../context/BookingContext'
-
 //icons
 import { FaGlassCheers } from 'react-icons/fa'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
