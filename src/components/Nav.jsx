@@ -6,10 +6,12 @@ import Icon from '../assets/img/icon_hamburger_menu.svg'
 import '../assets/scss/nav.scss'
 //react
 import { useState } from 'react'
+//router
+import { NavLink } from 'react-router-dom'
 
 
 export default function Nav() {
-  
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -28,10 +30,10 @@ export default function Nav() {
         className={isMenuOpen ? 'show list_wrapper' : 'hide list_wrapper'}
       >
         <ul>
-          <li><a href='/'>home</a></li>
+          <li><NavLink to='/'>Home</NavLink></li>
           <li><a href='/about'>about</a></li>
           <li><a href='/menu'>menu</a></li>
-          <li><a href='/reservation'>reservation</a></li>
+          <li><NavLink to='/booking'>reservation</NavLink></li>
           <li><a href='/order'>order online</a></li>
           <li><a href='/login'>login</a></li>
         </ul>

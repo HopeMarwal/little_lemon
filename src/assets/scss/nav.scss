@@ -27,6 +27,11 @@ nav {
     a {
       text-transform: uppercase;
       font-size: 18px;
+      padding: 10px;
+      border-bottom: 1px solid #fff;
+      &.active {
+        border-color: $main-clr-1;
+      }
     }
   }
 }
