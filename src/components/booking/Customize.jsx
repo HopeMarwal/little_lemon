@@ -8,26 +8,9 @@ import { FaGlassCheers } from 'react-icons/fa'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 export default function Customize() {
-  const { formData, handleChange } = useBooking()
+  const { formik } = useBooking()
 
   const [isOpen, setIsOpen] = useState(false)
-
-  const handleChangeInput = (e) => {
-    let property = e.target.name
-    let value = e.target.value
-
-    if(property === 'isOutsideTable') {
-      value = !formData.isOutsideTable
-    }
-
-    if(e.target.dataset.name === 'occasion') {
-      property = e.target.dataset.name;
-      value = e.target.textContent
-      setIsOpen(false)
-    }
-
-    handleChange(property, value)
-  }
 
   const options = [
     {
@@ -62,11 +45,16 @@ export default function Customize() {
           {option.text}
         </option>
       )
-    })
+  })
+
+
+  const validDate = new Date()
+  validDate.setDate(validDate.getDate() + 1)
+
 
   const occationNull = <><FaGlassCheers />Occasion<IoIosArrowDown /></>
+  const occasionSelected = <><FaGlassCheers />{formik.values.occasion}<IoIosArrowUp /></>
 
-  const occasionSelected = <><FaGlassCheers />{formData.occasion}<IoIosArrowUp /></>
   return (
     <div className='form customize'>
 
@@ -76,9 +64,14 @@ export default function Customize() {
           type="date"
           id="date"
           name="date"
-          value={formData.date}
-          onChange={handleChangeInput}
+          min={validDate.toISOString().slice(0, 10)}
+          value={formik.values.date}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {
+          formik.touched.date && <span>{formik.errors.date}</span>
+        }
       </div>
 
       <div className='field'>
@@ -86,11 +79,15 @@ export default function Customize() {
         <select
           name="time"
           id="time"
-          onChange={handleChangeInput}
-          value={formData.time}
+          onChange={formik.handleChange}
+          value={formik.values.time}
+          onBlur={formik.handleBlur}
         >
           {mapOption}
         </select>
+        {
+          formik.touched.time && <span>{formik.errors.time}</span>
+        }
         </div>
 
         <div className='field'>
@@ -99,9 +96,15 @@ export default function Customize() {
           type="number"
           id="numOfDiners"
           name="numOfDiners"
-          value={formData.numOfDiners}
-          onChange={handleChangeInput}
+          min="1"
+          max="16"
+          value={formik.values.numOfDiners}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {
+          formik.touched.numOfDiners && <span>{formik.errors.numOfDiners}</span>
+        }
       </div>
 
       <div className='field check'>
@@ -111,8 +114,8 @@ export default function Customize() {
             type="checkbox"
             id="outside"
             name="isOutsideTable"
-            checked={formData.isOutsideTable}
-            onChange={handleChangeInput}
+            checked={formik.values.isOutsideTable}
+            onChange={formik.handleChange}
           />
           <span className="checkmark"></span>
         </div>
@@ -120,41 +123,48 @@ export default function Customize() {
       </div>
 
       <div className='field occasion'>
-        <div className={formData.occasion === null ? 'title' : 'title selected'} onClick={() => setIsOpen(!isOpen)}>
-          { formData.occasion === null
+        <div className={formik.values.occasion === null ? 'title' : 'title selected'} onClick={() => setIsOpen(!isOpen)}>
+          { formik.values.occasion === null
             ? occationNull
             : occasionSelected
           }
         </div>
+        {/* Custom select */}
+        <div className="hide">
+          <input
+            name="occasion"
+            type="radio"
+            value="birthday"
+            id="birthday"
+            onChange={formik.handleChange}
+          />
+          <input
+            name="occasion"
+            type="radio"
+            value="anniversary"
+            id="anniversary"
+            onChange={formik.handleChange}
+          />
+          <input
+            name="occasion"
+            type="radio"
+            value="engagement"
+            id="engagement"
+            onChange={formik.handleChange}
+          />
+          <input
+            name="occasion"
+            type="radio"
+            value="other"
+            id="other"
+            onChange={formik.handleChange}
+          />
+        </div>
         <div className={ isOpen ? "options open" : 'options'}>
-          <div
-            className="option"
-            onClick={handleChangeInput}
-            data-name="occasion"
-          >
-            birthday
-          </div>
-          <div
-            className="option"
-            onClick={handleChangeInput}
-            data-name="occasion"
-          >
-            engagement
-          </div>
-          <div
-            className="option"
-            onClick={handleChangeInput}
-            data-name="occasion"
-          >
-            anniversary
-          </div>
-          <div
-            className="option"
-            onClick={handleChangeInput}
-            data-name="occasion"
-          >
-            other
-          </div>
+          <label onClick={()=> setIsOpen(false)} className='option' htmlFor='birthday'>birthday</label>
+          <label onClick={()=> setIsOpen(false)} className='option' htmlFor='anniversary'>anniversary</label>
+          <label onClick={()=> setIsOpen(false)} className='option' htmlFor='engagement'>engagement</label>
+          <label onClick={()=> setIsOpen(false)} className='option' htmlFor='other'>other</label>
         </div>
       </div>
     </div>

@@ -94,6 +94,9 @@ form {
     //Custom select
     .occasion {
       max-width: 400px;
+      .hide {
+        display: none;
+      }
     }
     .title {
       width: 100%;
@@ -125,13 +128,14 @@ form {
       top: 75px;
       left: 0;
       width: 100%;
+      flex-wrap: wrap;
       &.open {
-        display: block;
+        display: flex;
       }
     }
     .option {
       text-transform: capitalize;
-     
+      width: 100%;
       background-color: $highlight-clr-2;
       padding: 20px 30px;
       text-align: center;

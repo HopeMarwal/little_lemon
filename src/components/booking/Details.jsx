@@ -4,16 +4,8 @@ import { useBooking } from '../../context/BookingContext'
 
 
 export default function Details() {
-  const { formData, handleChange } = useBooking()
+  const { formik } = useBooking()
 
-
-  const handleChangeInput = (e) => {
-    let property = e.target.name
-    let value = e.target.value
-
-    handleChange(property, value)
-    console.log(formData)
-  }
   return (
     <div className='form details'>
       <div className='field'>
@@ -22,9 +14,13 @@ export default function Details() {
           type="text"
           id="fName"
           name="fName"
-          value={formData.fName}
-          onChange={handleChangeInput}
+          value={formik.values.fName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {
+          formik.touched.fName && <span>{formik.errors.fName}</span>
+        }
       </div>
 
       <div className='field'>
@@ -33,9 +29,13 @@ export default function Details() {
           type="text"
           id="lName"
           name="lName"
-          value={formData.lName}
-          onChange={handleChangeInput}
+          value={formik.values.lName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {
+          formik.touched.lName && <span>{formik.errors.lName}</span>
+        }
       </div>
 
       <div className='field'>
@@ -44,9 +44,13 @@ export default function Details() {
           type="email"
           id="email"
           name="email"
-          value={formData.email}
-          onChange={handleChangeInput}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {
+          formik.touched.email && <span>{formik.errors.email}</span>
+        }
       </div>
 
       <div className='field'>
@@ -55,9 +59,13 @@ export default function Details() {
           type="text"
           id="phone"
           name="phone"
-          value={formData.phone}
-          onChange={handleChangeInput}
+          value={formik.values.phone}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {
+          formik.touched.phone && <span>{formik.errors.phone}</span>
+        }
       </div>
     </div>
   )

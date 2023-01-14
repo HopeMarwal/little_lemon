@@ -11,7 +11,8 @@ import '../assets/scss/form.scss';
 
 export default function BookingForm({step, setStep}) {
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
     if(step !== 3) {
       setStep(prev => prev + 1)
     }
