@@ -4,6 +4,10 @@ import FormErrorMessage from './FormErrorMessage'
 //booking context
 import { useBooking } from '../../context/BookingContext'
 
+//icons
+import { FaGlassCheers } from 'react-icons/fa'
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+
 export default function Customize() {
   const { formData, handleChange } = useBooking()
 
@@ -20,6 +24,7 @@ export default function Customize() {
     if(e.target.dataset.name === 'occasion') {
       property = e.target.dataset.name;
       value = e.target.textContent
+      setIsOpen(false)
     }
 
     handleChange(property, value)
@@ -52,15 +57,17 @@ export default function Customize() {
     },
   ]
 
-  const mapOption = () => {
-    return options.map((option) => {
+  const mapOption = options.map((option) => {
       return (
         <option key={option.value} value={option.value}>
           {option.text}
         </option>
       )
     })
-  }
+
+  const occationNull = <><FaGlassCheers />Occasion<IoIosArrowDown /></>
+
+  const occasionSelected = <><FaGlassCheers />{formData.occasion}<IoIosArrowUp /></>
   return (
     <div className='form customize'>
 
@@ -83,7 +90,7 @@ export default function Customize() {
           onChange={handleChangeInput}
           value={formData.time}
         >
-          {mapOption()}
+          {mapOption}
         </select>
         </div>
 
@@ -98,20 +105,29 @@ export default function Customize() {
         />
       </div>
 
-      <div className='field'>
-        <label htmlFor='outside'>Outside table<span>*</span></label>
-        <input
-          type="checkbox"
-          id="outside"
-          name="isOutsideTable"
-          checked={formData.isOutsideTable}
-          onChange={handleChangeInput}
-        />
+      <div className='field check'>
+        <label htmlFor='outside'>Outside table
+        <div className="container">
+          <input
+            type="checkbox"
+            id="outside"
+            name="isOutsideTable"
+            checked={formData.isOutsideTable}
+            onChange={handleChangeInput}
+          />
+          <span className="checkmark"></span>
+        </div>
+        </label>
       </div>
 
-      <div className='field'>
-        <div>Occasion</div>
-        <div className={ isOpen ? "options open" : 'options hide'}>
+      <div className='field occasion'>
+        <div className={formData.occasion === null ? 'title' : 'title selected'} onClick={() => setIsOpen(!isOpen)}>
+          { formData.occasion === null
+            ? occationNull
+            : occasionSelected
+          }
+        </div>
+        <div className={ isOpen ? "options open" : 'options'}>
           <div
             className="option"
             onClick={handleChangeInput}
