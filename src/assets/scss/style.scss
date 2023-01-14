@@ -28,6 +28,14 @@ li {
   &:active {
     background-color: $secondary-clr-2;
   }
+  &:disabled {
+    background-color: $highlight-clr-2;
+    color: rgb(140, 140, 140);
+    cursor: not-allowed;
+    &:hover {
+      box-shadow: none;
+    }
+  }
 
 }
 h1 {

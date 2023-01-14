@@ -11,7 +11,7 @@ export const BookingProvider = ({children}) => {
 
   const formik = useFormik({
     initialValues: {
-      date: new Date().toISOString().slice(0, 10),
+      date: validDate.toISOString().slice(0, 10),
       time: '5PM',
       numOfDiners: 2,
       isOutsideTable: false,
@@ -23,7 +23,7 @@ export const BookingProvider = ({children}) => {
     },
     onSubmit: (values) => {},
     validationSchema: Yup.object({
-      date: Yup.date().min(validDate.toISOString().slice(0, 10), 'This date is not avaible'),
+      date: Yup.date().required('Choose date').min(validDate.toISOString().slice(0, 10), 'This date is not avaible'),
       numOfDiners: Yup.number().min(1, 'Error number').max(16, 'Maximum 16 people'),
       fName: Yup.string().required('Required'),
       lName: Yup.string().required('Required'),
