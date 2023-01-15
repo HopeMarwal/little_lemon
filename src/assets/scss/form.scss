@@ -4,6 +4,14 @@ form {
   max-width: 500px;
   margin: auto;
   padding-bottom: 50px;
+  .notification {
+    display: block;
+    margin-bottom: 40px;
+    font-family: $font-sans;
+    font-size: 25px;
+    color: green;
+    font-weight: 700;
+  }
   .btn {
     width: 100%;
   }

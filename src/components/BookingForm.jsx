@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 //components
 import Customize from './booking/Customize';
 import Confirmation from './booking/Confirmation';
@@ -7,11 +7,15 @@ import Details from './booking/Details';
 import '../assets/scss/form.scss';
 //context
 import { useBooking } from '../context/BookingContext';
+//api
+import { submitAPI } from '../dataApi/fetchData';
 
 
 export default function BookingForm({step, setStep}) {
 
   const { formik } = useBooking()
+
+  const [isFormSubmited, setIsFormSubmited] = useState(false)
 
   const isDisabled = () => {
     if(step === 1) {
@@ -32,19 +36,18 @@ export default function BookingForm({step, setStep}) {
     formik.validateForm()
 
     if(step !== 3) {
+      //handle next step
       setStep(prev => prev + 1)
+    } else {
+      //handle submit form
+      const response = submitAPI(formik.values)
+      setIsFormSubmited(response)
     }
-    //handle submit form
   }
   return (
     <form>
-      {
-        step === 1
-        ?  <Customize />
-        : step === 2
-          ? <Details />
-          :<Confirmation />
-      }
+      { isFormSubmited && <span className='notification'>Your reservation has been submited! Thank you for your choise!</span>}
+      { step === 1 ?  <Customize /> : step === 2 ? <Details /> :<Confirmation /> }
       <button className='btn' onClick={handleClick} disabled={isDisabled()}>
         {step !== 3 ? 'Next' : 'Submit'}
       </button>

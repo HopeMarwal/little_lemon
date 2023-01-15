@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 //component
 import FormErrorMessage from './FormErrorMessage'
 //booking context
@@ -6,47 +6,32 @@ import { useBooking } from '../../context/BookingContext'
 //icons
 import { FaGlassCheers } from 'react-icons/fa'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+//api
+import { fetchAPI } from '../../dataApi/fetchData'
 
 export default function Customize() {
+  //State
+  const [isOpen, setIsOpen] = useState(false)
+  const [options, setOptions] = useState([])
+
+  //Context
   const { formik } = useBooking()
 
-  const [isOpen, setIsOpen] = useState(false)
+  //Side effect
+  useEffect(() => {
+    const dateFormat = new Date(formik.values.date)
+    const data = fetchAPI(dateFormat)
+    setOptions(data)
+  }, [formik.values.date])
 
-  const options = [
-    {
-      value: '5PM',
-      text: '17:00'
-    },
-    {
-      value: '6PM',
-      text: '18:00'
-    },
-    {
-      value: '7PM',
-      text: '19:00'
-    },
-    {
-      value: '8PM',
-      text: '20:00'
-    },
-    {
-      value: '9PM',
-      text: '21:00'
-    },
-    {
-      value: '10PM',
-      text: '22:00'
-    },
-  ]
 
-  const mapOption = options.map((option) => {
+  const mapOption = options?.map((option) => {
       return (
-        <option key={option.value} value={option.value}>
-          {option.text}
+        <option key={option} value={option}>
+          {option}
         </option>
       )
   })
-
 
   const validDate = new Date()
   validDate.setDate(validDate.getDate() + 1)
@@ -57,7 +42,6 @@ export default function Customize() {
 
   return (
     <div className='form customize'>
-
       <div className='field'>
         <label htmlFor='date'>Date<span>*</span></label>
         <input
@@ -82,7 +66,9 @@ export default function Customize() {
           onChange={formik.handleChange}
           value={formik.values.time}
           onBlur={formik.handleBlur}
+          required
         >
+          <option value="none">Please choose an option</option>
           {mapOption}
         </select>
         {

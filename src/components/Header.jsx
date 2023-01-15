@@ -12,7 +12,7 @@ export default function Header() {
       <section>
 
         <div className="container">
-          <h1>Little Lemon</h1>
+          <h1 data-test-id="title">Little Lemon</h1>
           <h2>Chicago</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet sagittis risus, quis volutpat lorem euismod sed.</p>
           <Link className="btn" to='/booking'>Reserve a table</Link>

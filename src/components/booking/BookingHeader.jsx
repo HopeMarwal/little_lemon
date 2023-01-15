@@ -4,6 +4,7 @@ import { useBooking } from '../../context/BookingContext'
 export default function BookingHeader({step, setStep}) {
 
   const { formik } = useBooking()
+
   const handleChangeStep = (val) => {
     formik.validateForm()
     if(val === 1) {

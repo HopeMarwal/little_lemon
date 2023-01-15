@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 
@@ -12,7 +12,7 @@ export const BookingProvider = ({children}) => {
   const formik = useFormik({
     initialValues: {
       date: validDate.toISOString().slice(0, 10),
-      time: '5PM',
+      time: 'none',
       numOfDiners: 2,
       isOutsideTable: false,
       occasion: null,
