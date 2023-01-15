@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 //booking context
 import { useBooking } from '../../context/BookingContext'
+import FormErrorMessage from './FormErrorMessage'
 
 
-export default function Details() {
+export default function Details({step, setStep}) {
   const { formik } = useBooking()
+  
+  //event handlers
+  const handleClick = (e) => {
+    e.preventDefault()
+    if(formik.isValid && step === 2) {
+      setStep(prev => prev + 1)
+    }
+  }
 
   return (
     <div className='form details'>
@@ -19,7 +28,7 @@ export default function Details() {
           onBlur={formik.handleBlur}
         />
         {
-          formik.touched.fName && <span>{formik.errors.fName}</span>
+          formik.touched.fName && <FormErrorMessage error={formik.errors.fName} />
         }
       </div>
 
@@ -34,7 +43,7 @@ export default function Details() {
           onBlur={formik.handleBlur}
         />
         {
-          formik.touched.lName && <span>{formik.errors.lName}</span>
+          formik.touched.lName && <FormErrorMessage error={formik.errors.lName} />
         }
       </div>
 
@@ -49,7 +58,7 @@ export default function Details() {
           onBlur={formik.handleBlur}
         />
         {
-          formik.touched.email && <span>{formik.errors.email}</span>
+          formik.touched.email && <FormErrorMessage error={formik.errors.email} />
         }
       </div>
 
@@ -64,9 +73,11 @@ export default function Details() {
           onBlur={formik.handleBlur}
         />
         {
-          formik.touched.phone && <span>{formik.errors.phone}</span>
+          formik.touched.phone && <FormErrorMessage error={formik.errors.phone} />
         }
       </div>
+
+      <button className='btn' onClick={handleClick} disabled={!formik.isValid}>Next</button>
     </div>
   )
 }

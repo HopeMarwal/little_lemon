@@ -6,25 +6,33 @@ import { useBooking } from '../../context/BookingContext'
 //icons
 import { FaGlassCheers } from 'react-icons/fa'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-//api
-import { fetchAPI } from '../../dataApi/fetchData'
 
-export default function Customize() {
+export default function Customize({step, setStep}) {
   //State
   const [isOpen, setIsOpen] = useState(false)
-  const [options, setOptions] = useState([])
+  const [isDisabled, setIsDisabled] = useState(true)
 
   //Context
-  const { formik } = useBooking()
+  const { formik, options } = useBooking()
 
-  //Side effect
   useEffect(() => {
-    const dateFormat = new Date(formik.values.date)
-    const data = fetchAPI(dateFormat)
-    setOptions(data)
-  }, [formik.values.date])
+    if(formik.touched.date && formik.errors.date || formik.touched.numOfDiners && formik.errors.numOfDiners || formik.touched.time && formik.errors.time) {
+      setIsDisabled(true)
+    } else {
+      setIsDisabled(false)
+    }
+  }, [formik.values.date, formik.values.time, formik.values.numOfDiners])
 
+  //event handlers
+  const handleClick = (e) => {
+    e.preventDefault()
+    if(!isDisabled && step === 1) {
+      formik.validateForm()
+      setStep(prev => prev + 1)
+    }
+  }
 
+  //jsx expressions
   const mapOption = options?.map((option) => {
       return (
         <option key={option} value={option}>
@@ -54,7 +62,7 @@ export default function Customize() {
           onBlur={formik.handleBlur}
         />
         {
-          formik.touched.date && <span>{formik.errors.date}</span>
+          formik.touched.date && <FormErrorMessage error={formik.errors.date} />
         }
       </div>
 
@@ -68,11 +76,10 @@ export default function Customize() {
           onBlur={formik.handleBlur}
           required
         >
-          <option value="none">Please choose an option</option>
           {mapOption}
         </select>
         {
-          formik.touched.time && <span>{formik.errors.time}</span>
+          formik.touched.time && <FormErrorMessage error={formik.errors.time} />
         }
         </div>
 
@@ -89,7 +96,7 @@ export default function Customize() {
           onBlur={formik.handleBlur}
         />
         {
-          formik.touched.numOfDiners && <span>{formik.errors.numOfDiners}</span>
+          formik.touched.numOfDiners && <FormErrorMessage error={formik.errors.numOfDiners} />
         }
       </div>
 
@@ -153,6 +160,8 @@ export default function Customize() {
           <label onClick={()=> setIsOpen(false)} className='option' htmlFor='other'>other</label>
         </div>
       </div>
+
+      <button className='btn' onClick={handleClick} disabled={isDisabled}>Next</button>
     </div>
   )
 }

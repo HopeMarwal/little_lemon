@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+//api
+import { fetchAPI } from '../dataApi/fetchData'
 
 const BookingContext = createContext()
 
@@ -9,10 +11,13 @@ export const BookingProvider = ({children}) => {
   const validDate = new Date()
   validDate.setDate(validDate.getDate() + 1)
 
+  const [options, setOptions] = useState(fetchAPI(new Date(validDate)))
+
+
   const formik = useFormik({
     initialValues: {
       date: validDate.toISOString().slice(0, 10),
-      time: 'none',
+      time: options[0],
       numOfDiners: 2,
       isOutsideTable: false,
       occasion: null,
@@ -25,14 +30,23 @@ export const BookingProvider = ({children}) => {
     validationSchema: Yup.object({
       date: Yup.date().required('Choose date').min(validDate.toISOString().slice(0, 10), 'This date is not avaible'),
       numOfDiners: Yup.number().min(1, 'Error number').max(16, 'Maximum 16 people'),
+      time: Yup.string().oneOf(options, 'The time you chose is not avaible'),
       fName: Yup.string().required('Required'),
       lName: Yup.string().required('Required'),
       email: Yup.string().required('Required').email('Invalid email address'),
     }),
   });
 
+  
+   //Side effect
+  useEffect(() => {
+      const dateFormat = new Date(formik.values.date)
+      const data = fetchAPI(dateFormat)
+      setOptions(data)
+  }, [formik.values.date])
+
   return (
-    <BookingContext.Provider value={{formik}}>
+    <BookingContext.Provider value={{formik, options}}>
       {children}
     </BookingContext.Provider>
   )

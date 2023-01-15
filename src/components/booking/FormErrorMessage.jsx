@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function FormErrorMessage({children}) {
+export default function FormErrorMessage({error}) {
   return (
-    <div className='error'>{children}</div>
+    <div className='error'>
+      <span className='error_msg'>{error}</span>
+    </div>
   )
 }
