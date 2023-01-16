@@ -13,7 +13,6 @@ export const BookingProvider = ({children}) => {
 
   const [options, setOptions] = useState(fetchAPI(new Date(validDate)))
 
-
   const formik = useFormik({
     initialValues: {
       date: validDate.toISOString().slice(0, 10),
@@ -31,14 +30,13 @@ export const BookingProvider = ({children}) => {
       date: Yup.date().required('Choose date').min(validDate.toISOString().slice(0, 10), 'This date is not avaible'),
       numOfDiners: Yup.number().min(1, 'Error number').max(16, 'Maximum 16 people'),
       time: Yup.string().oneOf(options, 'The time you chose is not avaible'),
-      fName: Yup.string().required('Required'),
-      lName: Yup.string().required('Required'),
-      email: Yup.string().required('Required').email('Invalid email address'),
+      fName: Yup.string().required('First name is required').max(20, 'Max 20 symbols'),
+      lName: Yup.string().required('Last name is required').max(30, 'Max 30 symbols'),
+      email: Yup.string().required('Email is required').email('Invalid email address'),
     }),
   });
 
-  
-   //Side effect
+  //Side effect
   useEffect(() => {
       const dateFormat = new Date(formik.values.date)
       const data = fetchAPI(dateFormat)

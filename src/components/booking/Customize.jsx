@@ -27,7 +27,6 @@ export default function Customize({step, setStep}) {
   const handleClick = (e) => {
     e.preventDefault()
     if(!isDisabled && step === 1) {
-      formik.validateForm()
       setStep(prev => prev + 1)
     }
   }
@@ -61,13 +60,15 @@ export default function Customize({step, setStep}) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        {
-          formik.touched.date && <FormErrorMessage error={formik.errors.date} />
-        }
+        <FormErrorMessage
+          display={formik.touched.date}
+          test="date"
+          error={formik.errors.date}
+        />
       </div>
 
       <div className='field'>
-        <label htmlFor='Time'>Time<span>*</span></label>
+        <label htmlFor='time'>Time<span>*</span></label>
         <select
           name="time"
           id="time"
@@ -78,9 +79,11 @@ export default function Customize({step, setStep}) {
         >
           {mapOption}
         </select>
-        {
-          formik.touched.time && <FormErrorMessage error={formik.errors.time} />
-        }
+        <FormErrorMessage
+          display={formik.touched.time}
+          error={formik.errors.time}
+          test='time'
+        />
         </div>
 
         <div className='field'>
@@ -95,23 +98,25 @@ export default function Customize({step, setStep}) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        {
-          formik.touched.numOfDiners && <FormErrorMessage error={formik.errors.numOfDiners} />
-        }
+        <FormErrorMessage
+          display={formik.touched.numOfDiners}
+          error={formik.errors.numOfDiners}
+          test='numberOfDiners'
+        />
       </div>
 
       <div className='field check'>
         <label htmlFor='outside'>Outside table
-        <div className="container">
-          <input
-            type="checkbox"
-            id="outside"
-            name="isOutsideTable"
-            checked={formik.values.isOutsideTable}
-            onChange={formik.handleChange}
-          />
-          <span className="checkmark"></span>
-        </div>
+          <div className="container">
+            <input
+              type="checkbox"
+              id="outside"
+              name="isOutsideTable"
+              checked={formik.values.isOutsideTable}
+              onChange={formik.handleChange}
+            />
+            <span className="checkmark"></span>
+          </div>
         </label>
       </div>
 

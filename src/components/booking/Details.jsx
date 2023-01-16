@@ -27,9 +27,11 @@ export default function Details({step, setStep}) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        {
-          formik.touched.fName && <FormErrorMessage error={formik.errors.fName} />
-        }
+        <FormErrorMessage
+          display={formik.touched.fName}
+          error={formik.errors.fName}
+          test='fName'
+        />
       </div>
 
       <div className='field'>
@@ -42,9 +44,11 @@ export default function Details({step, setStep}) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        {
-          formik.touched.lName && <FormErrorMessage error={formik.errors.lName} />
-        }
+        <FormErrorMessage
+          display={formik.touched.lName}
+          error={formik.errors.lName}
+          test='lName'
+        />
       </div>
 
       <div className='field'>
@@ -57,9 +61,12 @@ export default function Details({step, setStep}) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        {
-          formik.touched.email && <FormErrorMessage error={formik.errors.email} />
-        }
+        <FormErrorMessage
+          display={formik.touched.email}
+          error={formik.errors.email}
+          test='email'
+        />
+
       </div>
 
       <div className='field'>
