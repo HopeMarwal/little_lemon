@@ -6,7 +6,7 @@ import FormErrorMessage from './FormErrorMessage'
 
 export default function Details({step, setStep}) {
   const { formik } = useBooking()
-  
+
   //event handlers
   const handleClick = (e) => {
     e.preventDefault()
@@ -77,7 +77,7 @@ export default function Details({step, setStep}) {
         }
       </div>
 
-      <button className='btn' onClick={handleClick} disabled={!formik.isValid}>Next</button>
+      <button className='btn' aria-label="On Click" onClick={handleClick} disabled={!formik.isValid}>Next</button>
     </div>
   )
 }
