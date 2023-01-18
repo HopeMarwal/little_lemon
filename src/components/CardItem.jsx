@@ -13,7 +13,7 @@ export default function CardItem({item}) {
         <p className="title">{item.title}</p>
         <p className="price">$ {item.price}</p>
         <p className="desc">{item.desc}</p>
-        <p className="delivery">Order a delivery</p>
+        <button className="delivery">Order a delivery</button>
         <img className='icon' src={icon} alt="delivery_icon" />
       </div>
     </div>
