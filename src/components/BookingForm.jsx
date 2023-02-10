@@ -2,7 +2,7 @@
 import Customize from './booking/Customize';
 import Confirmation from './booking/Confirmation';
 import Details from './booking/Details';
-//styl
+//style
 import '../assets/scss/form.scss';
 
 export default function BookingForm({step, setStep}) {
