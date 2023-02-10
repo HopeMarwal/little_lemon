@@ -10,6 +10,7 @@ export default function CardItem({item}) {
       <div className="img">
         <img src={item.img} alt={item.title} />
       </div>
+      {/* Info container */}
       <div className="info">
         <p className="title">{item.title}</p>
         <p className="price">$ {item.price}</p>
