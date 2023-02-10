@@ -6,6 +6,7 @@ import icon from '../assets/img/delivery_icon.png'
 export default function CardItem({item}) {
   return (
     <div className='card-item'>
+      {/* Img container */}
       <div className="img">
         <img src={item.img} alt={item.title} />
       </div>
