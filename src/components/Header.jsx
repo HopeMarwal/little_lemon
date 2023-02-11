@@ -10,6 +10,7 @@ export default function Header() {
   return (
     <header>
       <section>
+        
         {/* Heading */}
         <div className="container">
           <h1 data-test-id="title">Little Lemon</h1>
@@ -17,6 +18,8 @@ export default function Header() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet sagittis risus, quis volutpat lorem euismod sed.</p>
           <Link className="btn" to='/booking'>Reserve a table</Link>
         </div>
+
+        {/* Img */}
         <div className='img'>
           <img src={Image} alt="restaurant_food_little_lemon" />
         </div>
