@@ -35,6 +35,7 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Social links */}
         <div className='col'>
           <h4>Social Media Links</h4>
           <ul>
