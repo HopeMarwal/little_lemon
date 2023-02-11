@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header>
       <section>
-
+        {/* Heading */}
         <div className="container">
           <h1 data-test-id="title">Little Lemon</h1>
           <h2>Chicago</h2>
