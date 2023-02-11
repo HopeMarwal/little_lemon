@@ -25,6 +25,7 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Contact */}
         <div className='col'>
           <h4>Contact</h4>
           <ul>
