@@ -7,6 +7,7 @@ export default function Footer() {
     <footer>
 
       <div className="footer_wrapper">
+        {/* Logo container */}
         <div className='footer_logo'>
           <img src={Logo} alt="little_lemon_footer_logo" />
         </div>
