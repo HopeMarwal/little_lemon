@@ -12,6 +12,7 @@ export default function Footer() {
           <img src={Logo} alt="little_lemon_footer_logo" />
         </div>
 
+        {/* Navigation */}
         <div className='col'>
           <h4>Doormat navigation</h4>
           <ul>
