@@ -21,6 +21,7 @@ export default function Nav() {
         <img src={Logo} alt="little_lemon" />
       </div>
 
+      {/* Burger icon */}
       <div className='burger' onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <img src={Icon} alt="menu" />
       </div>
