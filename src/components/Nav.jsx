@@ -16,7 +16,7 @@ export default function Nav() {
 
   return (
     <nav>
-
+      {/* Logo */}
       <div className="logo">
         <img src={Logo} alt="little_lemon" />
       </div>
