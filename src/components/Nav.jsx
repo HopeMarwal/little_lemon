@@ -26,6 +26,7 @@ export default function Nav() {
         <img src={Icon} alt="menu" />
       </div>
 
+      {/* Menu items */}
       <div
         onClick={() => setIsMenuOpen(false)}
         className={isMenuOpen ? 'show list_wrapper' : 'hide list_wrapper'}
