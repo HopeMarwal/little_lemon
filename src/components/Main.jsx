@@ -103,6 +103,7 @@ export default function Main() {
         </div>
       </section>
 
+      {/* About section */}
       <section className="about">
         <div className="container">
           <h1>Little Lemon</h1>
