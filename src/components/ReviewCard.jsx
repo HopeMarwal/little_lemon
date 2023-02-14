@@ -1,3 +1,4 @@
+//Style
 import '../assets/scss/reviewCard.scss';
 import rating from '../assets/img/Star_rating.png'
 
