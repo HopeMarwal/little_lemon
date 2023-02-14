@@ -1,5 +1,6 @@
 //Style
 import '../assets/scss/reviewCard.scss';
+//Image
 import rating from '../assets/img/Star_rating.png'
 
 export default function ReviewCard({item}) {
