@@ -6,6 +6,7 @@ export default function ReviewCard({item}) {
     <div className='review_card'>
       <img className='photo' src={item.img} alt={item.name} />
       <p className='name'>{item.name}</p>
+      {/* Rating */}
       <div className="rating">
         <img src={rating} alt="five_star_rating" />
       </div>
