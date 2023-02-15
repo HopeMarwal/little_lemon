@@ -13,6 +13,7 @@ export default function ReviewCard({item}) {
       <div className="rating">
         <img src={rating} alt="five_star_rating" />
       </div>
+      {/* Text */}
       <p className="text">{item.text}</p>
     </div>
   )
