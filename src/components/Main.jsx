@@ -9,6 +9,7 @@ import specialTwo from '../assets/img/bruchetta.svg';
 import specialThree from '../assets/img/lemon_dessert.jpg'
 import MarioAndAdrianA from '../assets/img/restaurant_chef_B.jpg'
 import MarioAndAdrianB from '../assets/img/Mario_and_Adrian_A.jpg'
+//components
 import CardItem from './CardItem';
 import ReviewCard from './ReviewCard';
 
