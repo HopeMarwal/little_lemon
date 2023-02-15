@@ -6,6 +6,7 @@ import rating from '../assets/img/Star_rating.png'
 export default function ReviewCard({item}) {
   return (
     <div className='review_card'>
+      {/* Photo */}
       <img className='photo' src={item.img} alt={item.name} />
       <p className='name'>{item.name}</p>
       {/* Rating */}
