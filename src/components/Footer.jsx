@@ -1,3 +1,4 @@
+//logo
 import Logo from '../assets/img/logo_footer.png'
 //style
 import '../assets/scss/footer.scss'
