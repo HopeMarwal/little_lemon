@@ -8,6 +8,7 @@ import '../assets/scss/form.scss';
 export default function BookingForm({step, setStep}) {
   return (
     <form>
+      {/* Render component based on step prop */}
       { step === 1 && <Customize step={step} setStep={setStep} /> }
       { step === 2 && <Details step={step} setStep={setStep} /> }
       { step === 3 && <Confirmation step={step} setStep={setStep} /> }
