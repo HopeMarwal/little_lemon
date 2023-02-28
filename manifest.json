@@ -1,0 +1,25 @@
+{
+  "short_name": "Little Lemon",
+  "name": "Little Lemon Restaurant",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "174x196"
+    },
+    {
+      "src": "icon_lg.png",
+      "type": "image/png",
+      "sizes": "264x288"
+    },
+    {
+      "src": "icon_og.png",
+      "type": "image/png",
+      "sizes": "492x830"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
